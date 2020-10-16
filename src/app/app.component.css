@@ -1,0 +1,12 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.inTable{
+    width:100%;
+}
+.alignRight{
+    text-align:right;
+}
+.ddPadding{
+    padding:20px;
+    border:1px solid #cccccc;
+}

@@ -1,0 +1,69 @@
+<div class="container">
+  <h1>HHA Exchange Dashboard</h1>
+  <div class="ddPadding">
+    <label for="stateName">Choose a State:</label>
+    <select >State
+      <option>-- State --</option>
+      <option *ngFor="let state of states" value={{state.region_code}}>{{ state.region }}</option>
+    </select>
+  </div>
+  <table class="table table-striped">
+    <tbody>
+      <tr *ngFor="let state of states">
+        <td *ngIf="state.perio==2015">
+          <table class="inTable" >
+            <tr>
+              <td colspan="2" ><h4>Period Year 2015</h4></td>
+            </tr>
+            <tr>
+              <td >Region:</td><td class="alignRight">{{ state.region }}</td>
+            </tr>
+          </table>
+          <table class="inTable">
+            <tr>
+              <td>atleast one measure</td><td class="alignRight">{{ state.atleast_one_measure}}</td>
+            </tr>
+          </table>
+          <table class="inTable">
+            <tr>
+              <td>immunization measure</td><td class="alignRight">{{ state.immunization_measure }}</td>
+            </tr>
+          </table>
+          <table class="inTable">
+            <tr>
+              <td>reportable lab results measure</td><td class="alignRight">{{ state.reportable_lab_results_measure }}</td>
+            </tr>
+          </table>
+          <table class="inTable">
+            <tr>
+              <td>syndromic surveillance measure</td><td class="alignRight">{{ state.syndromic_surveillance_measure }}</td>
+            </tr>
+          </table>
+          <table class="inTable">
+            <tr>
+              <td>registry measure</td><td class="alignRight">{{ state.registry_measure }}</td>
+            </tr>
+          </table>
+        </td>
+        <td *ngIf="state.perio==2015" style="border-left:1px solid #000;">
+          <div class="card-body">
+            <h4 class="card-title border-bottom">Measure Charts</h4>
+            <ngx-charts-bar-vertical 
+                [view]="[500,300]"
+                [results]="period"
+                [xAxisLabel]="'region'"
+                [legendTitle]="'Measure'"
+                [yAxisLabel]="'Measure'"
+                [legend]="true"
+                [showXAxisLabel]="true"
+                [showYAxisLabel]="true"
+                [xAxis]="true"
+                [yAxis]="true"
+                [gradient]="true">
+            </ngx-charts-bar-vertical>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
